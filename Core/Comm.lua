@@ -23,7 +23,8 @@ function LW:OnCommReceived(prefix, message, distribution, sender)
         if message == "LustWatchAnnouncer" then
             -- ignore self-broadcasted messages
             if not LW:isSelf(sender) then
-                LW.isAnnouncer = false
+                LW:setAnnouncer(false)
+                LW:toggleCombat(false) -- disable combat log listener when not the announcer
                 LW:log(sender .. " has become the new announcer.")
             else
                 LW:log("Confirmed as announcer from own message.")

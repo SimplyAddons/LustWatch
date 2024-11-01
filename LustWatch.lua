@@ -30,6 +30,26 @@ function LW:getAnnouncer()
     return LW.options.isAnnouncer
 end
 
+-- toggle combat log events
+-- this function differs slightly from registerCombat() in that its meant
+-- to be used after bloodlust is cast in a raid, and when the player leaves combat.
+-- this helps optimize performance since we dont need to listen to combat log events
+-- after bloodlust is cast. we do need to listen again when combat ends, as the
+-- raid can always reset the bloodlust cooldown.
+function LW:toggleCombat(enable)
+    if enable then
+        if not LW.combatRegistered then
+            LW.frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+            LW.combatRegistered = true
+            LW:log("Combat log listener re-enabled.")
+        end
+    else
+        LW.frame:UnregisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+        LW.combatRegistered = false
+        LW:log("Combat log listener disabled.")
+    end
+end
+
 -- register or unregister combat log events
 function LW:registerCombat()
     if LW.options.enabled and (IsInGroup() or IsInRaid()) then
@@ -86,6 +106,7 @@ end
 LW.frame = CreateFrame("Frame")
 LW.frame:RegisterEvent("CHAT_MSG_ADDON")
 LW.frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+LW.frame:RegisterEvent("PLAYER_REGEN_ENABLED")
 LW.frame:RegisterEvent("GROUP_ROSTER_UPDATE")
 
 -- event listener
@@ -102,10 +123,21 @@ LW.frame:SetScript("OnEvent", function(self, event, ...)
         LW:registerCombat()
         LW:assignAnnouncer()
 
+    elseif event == "PLAYER_REGEN_ENABLED" then
+        LW:log("PLAYER_REGEN_ENABLED triggered.")
+        if IsInRaid() then
+            LW:toggleCombat(true)
+        end
+
     elseif event == "COMBAT_LOG_EVENT_UNFILTERED" and LW:getAnnouncer() then
         local _, eventType, _, sourceGUID, sourceName, _, _, _, _, _, _, spellID = CombatLogGetCurrentEventInfo()
         if eventType == "SPELL_CAST_SUCCESS" and (LW.hasteItems[spellID] or LW.warpSpells[spellID]) then
             LW:announceLust(spellID, sourceGUID, sourceName)
+            -- Disable listener after bloodlust is used in raid for performance.
+            -- will be re-enabled when player leaves combat.
+            if IsInRaid() then
+                LW:toggleCombat(false)
+            end
         end
 
     elseif event == "CHAT_MSG_ADDON" then
