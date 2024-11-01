@@ -5,7 +5,6 @@ LWDB = LWDB or { enabled = true }
 
 -- local state
 LW.combatRegistered = false
-LW.chatRegistered = false
 LW.channel = "LustWatchChannel"
 
 -- addon settings
@@ -60,25 +59,25 @@ function LW:assignAnnouncer()
 end
 
 -- announce lust
+-- note: SendChatMessage() does not permit using colorized strings |cff...|r
 function LW:announceLust(spellID, sourceGUID, sourceName)
-    if LW:getAnnouncer() then
-        local spellLink = C_Spell.GetSpellLink(spellID)
-        local chatType = LW:getChatType()
-        LW:log('Announcing to ' .. chatType .. ' channel.')
+    local chatType = LW:getChatType()
+    LW:log('Announcing to ' .. chatType .. ' channel.')
 
-        if UnitInParty(sourceName) then
-            if LW.hasteItems[spellID] then
-                SendChatMessage("{rt1} [" .. UnitClass(sourceName) .. "] " .. sourceName .. " used " .. spellLink .. " {rt1}", chatType)
-            elseif LW.warpSpells[spellID] then
-                SendChatMessage("{rt2} [" .. UnitClass(sourceName) .. "] " .. sourceName .. " cast " .. spellLink .. " {rt2}", chatType)
-            end
+    local spellLink = C_Spell.GetSpellLink(spellID)
+
+    if UnitInParty(sourceName) then
+        if LW.hasteItems[spellID] then
+            SendChatMessage("LustWatch: {rt3} [" .. UnitClass(sourceName) .. "] " .. sourceName .. " used " .. spellLink, chatType)
+        elseif LW.warpSpells[spellID] then
+            SendChatMessage("LustWatch: {rt3} [" .. UnitClass(sourceName) .. "] " .. sourceName .. " cast " .. spellLink, chatType)
         end
+    end
 
-        if LW.warpSpells[spellID] and string.match(sourceGUID, "Pet") then
-            local petName, ownerName = LW:getHunterPetOwner(sourceGUID)
-            if petName and ownerName then
-                SendChatMessage("{rt2} Pet [" .. petName .. "] from " .. ownerName .. " cast " .. spellLink .. " {rt2}", chatType)
-            end
+    if LW.warpSpells[spellID] and string.match(sourceGUID, "Pet") then
+        local petName, ownerName = LW:getHunterPetOwner(sourceGUID)
+        if petName and ownerName then
+            SendChatMessage("LustWatch: {rt3} Pet [" .. petName .. "] from " .. ownerName .. " cast " .. spellLink, chatType)
         end
     end
 end

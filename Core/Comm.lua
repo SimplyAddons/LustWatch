@@ -2,10 +2,9 @@ local addonName, LW = ...
 
 -- register chat channel
 function LW:registerChat()
-    if LW.options.enabled and not LW.chatRegistered then
+    if LW.options.enabled then
         local result = C_ChatInfo.RegisterAddonMessagePrefix(LW.channel)
         if result == Enum.RegisterAddonMessagePrefixResult.Success then
-            LW.chatRegistered = true
             LW:log("Chat channel registered.")
         elseif result == Enum.RegisterAddonMessagePrefixResult.DuplicatePrefix then
             LW:log("Chat channel registration skipped (already registered).")
