@@ -10,9 +10,9 @@ end
 -- colorize the on/off states
 function LW:stateColor(state)
     if state then
-        return "|cff1cb619On|r"
+        return "|cff00d1b2ON|r"
     else
-        return "|cffbfbfbfOff|r"
+        return "|cffbfbfbfOFF|r"
     end
 end
 

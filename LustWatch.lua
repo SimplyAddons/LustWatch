@@ -141,14 +141,12 @@ local function cmdHandler(msg)
         print("|cffb48ef9LustWatch:|r Debug mode is now " .. LW:stateColor(LW.options.debug))
     else
         print("|cffb48ef9LustWatch:|r -----------------------------")
-        print("|cffb48ef9LustWatch:|r is " .. LW:stateColor(LW.options.enabled))
-        print("|cffb48ef9LustWatch:|r debug mode is " .. LW:stateColor(LW.options.debug))
-        print("|cffb48ef9LustWatch:|r commands: /lw on, /lw off")
-        print("|cffb48ef9LustWatch:|r -----------------------------")
+        print("|cffb48ef9LustWatch:|r is " .. LW:stateColor(LW.options.enabled) .. ".")
         if IsInGroup() or IsInRaid() then
-            print("|cffb48ef9LustWatch:|r you " .. (LW:getAnnouncer() and "|cff1cb619are|r" or "|cffbfbfbfare not|r") .. " the announcer.")
-            print("|cffb48ef9LustWatch:|r -----------------------------")
+            print("|cffb48ef9LustWatch:|r you " .. (LW:getAnnouncer() and "|cff00d1b2ARE|r" or "|cffbfbfbfARE NOT|r") .. " the announcer.")
         end
+        print("|cffb48ef9LustWatch:|r commands: |cff00d1b2/lw on|r , |cff00d1b2/lw off|r")
+        print("|cffb48ef9LustWatch:|r -----------------------------")
     end
 end
 SLASH_LUSTWATCH1 = "/lw"
