@@ -17,6 +17,8 @@ Lust Watch operates automatically in the background. If you're the designated an
 
 ## Commands
 
+You can substitute `/lw` with `/lust` or `/lustwatch` depending on your preference.
+
 | Command      | Description                                    |
 |--------------|------------------------------------------------|
 | `/lw`        | Shows addon state, including announcer status. |

@@ -172,18 +172,20 @@ local function cmdHandler(msg)
         LWDB.debug = LW.options.debug
         print("|cffb48ef9LustWatch:|r Debug mode is now " .. LW:stateColor(LW.options.debug))
     else
-        print("|cffb48ef9LustWatch:|r -----------------------------")
+        print("|cffb48ef9LustWatch:|r ------------------------------------------")
         print("|cffb48ef9LustWatch:|r is " .. LW:stateColor(LW.options.enabled) .. ".")
         print("|cffb48ef9LustWatch:|r combat monitoring is " .. LW:stateColor(LW.combatRegistered) .. ".")
         print("|cffb48ef9LustWatch:|r debug mode is " .. LW:stateColor(LW.options.debug) .. ".")
         if IsInGroup() or IsInRaid() then
             print("|cffb48ef9LustWatch:|r you " .. (LW:getAnnouncer() and "|cff00d1b2ARE|r" or "|cffbfbfbfARE NOT|r") .. " the announcer.")
         end
-        print("|cffb48ef9LustWatch:|r commands: |cff00d1b2/lw on|r , |cff00d1b2/lw off|r")
-        print("|cffb48ef9LustWatch:|r -----------------------------")
+        print("|cffb48ef9LustWatch:|r commands: |cff00d1b2/lw on|r , |cff00d1b2/lw off|r , |cff00d1b2/lw debug|r")
+        print("|cffb48ef9LustWatch:|r ------------------------------------------")
     end
 end
 SLASH_LUSTWATCH1 = "/lw"
-SLASH_LUSTWATCH2 = "/lustwatch"
+SLASH_LUSTWATCH2 = "/lust"
+SLASH_LUSTWATCH3 = "/lustwatch"
 SlashCmdList["LW"] = cmdHandler
+SlashCmdList["LUST"] = cmdHandler
 SlashCmdList["LUSTWATCH"] = cmdHandler
