@@ -4,9 +4,12 @@ Lust Watch is a World of Warcraft addon that tracks and announces when players o
 
 ## Features
 
-- **Language Support**: Compatible with multiple game languages for seamless functionality across regions.
+- **Language Support**: Compatible with multiple game languages for seamless functionality across regions (*\*coming soon*).
 - **Comprehensive Detection**: Tracks Bloodlust/Heroism activations from players, pets, and items with similar effects.
-- **Optimized Announcing**: When multiple players in the same group or raid have Lust Watch, the addon designates one player as the announcer, preventing duplicate messages in chat.
+- **Efficient Announcing System**:
+  - In groups or raids with multiple players running Lust Watch, the addon selects a single announcer to prevent duplicate messages in chat.
+  - By designating one announcer, all other players benefit from reduced event monitoring, enhancing their performance.
+  - In raids, combat log monitoring automatically turns off after Bloodlust/Heroism is used, resuming only after combat ends to prepare for the next possible use. This optimizes performance, as it’s typically unnecessary to track Bloodlust/Heroism beyond the ability’s 10-minute cooldown, which usually outlasts most boss encounters.
 
 ## Usage
 
@@ -16,6 +19,7 @@ Lust Watch operates automatically in the background. If you're the designated an
 
 | Command      | Description                                    |
 |--------------|------------------------------------------------|
+| `/lw`        | Shows addon state, including announcer status. |
 | `/lw on`     | Enables Lust Watch.                            |
 | `/lw off`    | Disables Lust Watch.                           |
 | `/lw debug`  | Toggles debug mode for troubleshooting.        |
