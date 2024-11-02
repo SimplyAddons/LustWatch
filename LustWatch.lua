@@ -174,6 +174,8 @@ local function cmdHandler(msg)
     else
         print("|cffb48ef9LustWatch:|r -----------------------------")
         print("|cffb48ef9LustWatch:|r is " .. LW:stateColor(LW.options.enabled) .. ".")
+        print("|cffb48ef9LustWatch:|r combat monitoring is " .. LW:stateColor(LW.combatRegistered) .. ".")
+        print("|cffb48ef9LustWatch:|r debug mode is " .. LW:stateColor(LW.options.debug) .. ".")
         if IsInGroup() or IsInRaid() then
             print("|cffb48ef9LustWatch:|r you " .. (LW:getAnnouncer() and "|cff00d1b2ARE|r" or "|cffbfbfbfARE NOT|r") .. " the announcer.")
         end
