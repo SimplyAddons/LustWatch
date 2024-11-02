@@ -26,4 +26,4 @@ Lust Watch operates automatically in the background. If you're the designated an
 
 ## About
 
-Lust Watch is inspired by the Lust Detector addon and aims to offer a streamlined and focused experience for tracking Bloodlust and Heroism activations. Designed with performance and simplicity in mind, Lust Watch prioritizes its core functionality for reliable group announcements.
+Lust Watch aims to offer a streamlined and focused experience for tracking Bloodlust and Heroism activations. Designed with performance and simplicity in mind, Lust Watch prioritizes its core functionality for reliable group announcements.
