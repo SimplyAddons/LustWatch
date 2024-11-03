@@ -157,7 +157,7 @@ local function toggle(enabled)
     else
         LW:setAnnouncer(false)
     end
-    print("|cffb48ef9LustWatch:|r has been turned " .. LW:stateColor(enabled))
+    print(LW:name() .. ": has been turned " .. LW:stateColor(enabled))
 end
 
 -- commands
@@ -170,17 +170,17 @@ local function cmdHandler(msg)
     elseif msg == 'DEBUG' then
         LW.options.debug = not LW.options.debug
         LWDB.debug = LW.options.debug
-        print("|cffb48ef9LustWatch:|r Debug mode is now " .. LW:stateColor(LW.options.debug))
+        print(LW:name() .. ": Debug mode is now " .. LW:stateColor(LW.options.debug))
     else
-        print("|cffb48ef9LustWatch:|r ------------------------------------------")
-        print("|cffb48ef9LustWatch:|r is " .. LW:stateColor(LW.options.enabled) .. ".")
-        print("|cffb48ef9LustWatch:|r combat monitoring is " .. LW:stateColor(LW.combatRegistered) .. ".")
-        print("|cffb48ef9LustWatch:|r debug mode is " .. LW:stateColor(LW.options.debug) .. ".")
+        print(LW:name() .. ": ------------------------------------------")
+        print(LW:name() .. ": is " .. LW:stateColor(LW.options.enabled) .. ".")
+        print(LW:name() .. ": combat monitoring is " .. LW:stateColor(LW.combatRegistered) .. ".")
+        print(LW:name() .. ": debug mode is " .. LW:stateColor(LW.options.debug) .. ".")
         if IsInGroup() or IsInRaid() then
-            print("|cffb48ef9LustWatch:|r you " .. (LW:getAnnouncer() and "|cff00d1b2ARE|r" or "|cffbfbfbfARE NOT|r") .. " the announcer.")
+            print(LW:name() .. ": you " .. (LW:getAnnouncer() and "|cff00d1b2ARE|r" or "|cffbfbfbfARE NOT|r") .. " the announcer.")
         end
-        print("|cffb48ef9LustWatch:|r commands: |cff00d1b2/lw on|r , |cff00d1b2/lw off|r , |cff00d1b2/lw debug|r")
-        print("|cffb48ef9LustWatch:|r ------------------------------------------")
+        print(LW:name() .. ": commands: |cff00d1b2/lw on|r , |cff00d1b2/lw off|r , |cff00d1b2/lw debug|r")
+        print(LW:name() .. ": ------------------------------------------")
     end
 end
 SLASH_LUSTWATCH1 = "/lw"

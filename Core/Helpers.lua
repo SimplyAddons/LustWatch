@@ -1,9 +1,14 @@
 local addonName, LW = ...
 
+-- colorized LustWatch name
+function LW:name()
+    return "|cffb48ef9Lust|r|cfff9e08eWatch|r"
+end
+
 -- log messages to chat
 function LW:log(message)
     if LW.options.debug then
-        print("|cffb48ef9LustWatch:|r " .. message)
+        print(LW:name() .. ": " .. message)
     end
 end
 
@@ -19,7 +24,7 @@ end
 -- check if sender is the player
 function LW:isSelf(sender)
     local playerName, playerRealm = UnitFullName("player")
-    local fullPlayerName = playerName .. "-" .. playerRealm
+    local fullPlayerName = playerRealm and (playerName .. "-" .. playerRealm) or playerName
     return sender == fullPlayerName
 end
 
