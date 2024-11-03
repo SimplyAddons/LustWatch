@@ -1,6 +1,6 @@
 # Lust Watch
 
-Lust Watch is a World of Warcraft addon that tracks and announces when players or pets use abilities like Bloodlust or Heroism in group or raid settings.
+Lust Watch is a World of Warcraft addon that tracks and announces when players or pets use abilities like Bloodlust or Heroism in group or raid settings. Designed with performance and simplicity in mind, Lust Watch prioritizes its core functionality for reliable group announcements.
 
 ## Features
 
@@ -25,7 +25,3 @@ You can substitute `/lw` with `/lust` or `/lustwatch` depending on your preferen
 | `/lw on`     | Enables Lust Watch.                            |
 | `/lw off`    | Disables Lust Watch.                           |
 | `/lw debug`  | Toggles debug mode for troubleshooting.        |
-
-## About
-
-Lust Watch aims to offer a streamlined and focused experience for tracking Bloodlust and Heroism activations. Designed with performance and simplicity in mind, Lust Watch prioritizes its core functionality for reliable group announcements.
