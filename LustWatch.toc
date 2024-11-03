@@ -1,10 +1,10 @@
 ## Interface: 110005
-## Title: |cFF1784d1Lust Watch|r
+## Title: |cffb48ef9Lust Watch|r
 ## Notes: Monitors your group or raid and reports who activated Bloodlust/Heroism.
 ## Author: SimplyAddons
 ## Version: @project-version@
 ## SavedVariables: LWDB
-## X-Category: Combat
+## X-Category: Buffs & Debuffs
 ## X-Curse-Project-ID: 1131833
 
 Core/LustSpells.lua
