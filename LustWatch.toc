@@ -4,6 +4,7 @@
 ## Author: SimplyAddons
 ## Version: @project-version@
 ## SavedVariables: LWDB
+## DefaultState: Enabled
 ## X-Category: Buffs & Debuffs
 ## X-Curse-Project-ID: 1131833
 
