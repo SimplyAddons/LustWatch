@@ -87,14 +87,14 @@ function LW:announceLust(spellID, sourceGUID, sourceName)
     local spellLink = C_Spell.GetSpellLink(spellID)
 
     if UnitInParty(sourceName) then
-        if LW.hasteItems[spellID] then
+        if LW.lustItems[spellID] then
             SendChatMessage("LustWatch: {rt3} [" .. UnitClass(sourceName) .. "] " .. sourceName .. " used " .. spellLink, chatType)
-        elseif LW.warpSpells[spellID] then
+        elseif LW.lustSpells[spellID] then
             SendChatMessage("LustWatch: {rt3} [" .. UnitClass(sourceName) .. "] " .. sourceName .. " cast " .. spellLink, chatType)
         end
     end
 
-    if LW.warpSpells[spellID] and string.match(sourceGUID, "Pet") then
+    if LW.lustSpells[spellID] and string.match(sourceGUID, "Pet") then
         local petName, ownerName = LW:getHunterPetOwner(sourceGUID)
         if petName and ownerName then
             SendChatMessage("LustWatch: {rt3} Pet [" .. petName .. "] from " .. ownerName .. " cast " .. spellLink, chatType)
@@ -131,7 +131,7 @@ LW.frame:SetScript("OnEvent", function(self, event, ...)
 
     elseif event == "COMBAT_LOG_EVENT_UNFILTERED" and LW:getAnnouncer() then
         local _, eventType, _, sourceGUID, sourceName, _, _, _, _, _, _, spellID = CombatLogGetCurrentEventInfo()
-        if eventType == "SPELL_CAST_SUCCESS" and (LW.hasteItems[spellID] or LW.warpSpells[spellID]) then
+        if eventType == "SPELL_CAST_SUCCESS" and (LW.lustItems[spellID] or LW.lustSpells[spellID]) then
             LW:announceLust(spellID, sourceGUID, sourceName)
             -- Disable listener after bloodlust is used in raid for performance.
             -- will be re-enabled when player leaves combat.

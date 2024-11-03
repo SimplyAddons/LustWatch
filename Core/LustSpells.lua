@@ -1,6 +1,6 @@
 local addonName, LW = ...
 
-LW.hasteItems = {
+LW.lustItems = {
     [178207] = true, -- Drums of Fury
     [256740] = true, -- Drums of the Maelstrom
     [230935] = true, -- Drums of the Mountain
@@ -10,7 +10,7 @@ LW.hasteItems = {
     [444257] = true, -- Thunderous Drums - TwW
 }
 
-LW.warpSpells = {
+LW.lustSpells = {
     [2825] = true, -- Bloodlust
     [32182] = true, -- Heroism
     [80353] = true, -- Time Warp
